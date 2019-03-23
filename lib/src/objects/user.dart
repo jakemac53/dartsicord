@@ -91,7 +91,7 @@ class Member extends _Resource {
   static Future<Member> _fromMap(
       Map<String, dynamic> obj, DiscordClient client, Guild guild) async {
     final roleList = <Role>[];
-    final List<String> roles = obj["roles"];
+    final List<String> roles = List<String>.from(obj["roles"] as List);
     for (int i = 0; i < roles.length; i++) {
       final roleId = roles[i];
       final role =

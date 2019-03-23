@@ -56,7 +56,7 @@ class ChannelDeleteEvent {
   static Future<Null> construct(Packet packet) async {
     final Map<String, dynamic> data = packet.data;
     final channel = await Channel._fromMap(data, packet.client);
-    if (channel.guild != null)
+    if (channel?.guild != null)
       channel.guild.channels.removeWhere((c) => c.id == channel.id);
 
     final event = new ChannelUpdateEvent(channel);
